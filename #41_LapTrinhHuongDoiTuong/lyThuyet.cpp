@@ -10,6 +10,7 @@ public:
     SinhVien();
     SinhVien(string, string, string, double);
 };
+
 SinhVien::SinhVien(string ma, string name, string birth, double diem)
 {
     id = ma;
@@ -17,11 +18,13 @@ SinhVien::SinhVien(string ma, string name, string birth, double diem)
     ns = birth;
     gpa = diem;
 }
+
 SinhVien::SinhVien()
 {
     id = ten = ns = "";
     gpa = 0;
 }
+
 int main()
 {
     SinhVien x;

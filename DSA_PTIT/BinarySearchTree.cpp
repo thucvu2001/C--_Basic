@@ -115,6 +115,18 @@ NODE* timKiem(TREE t, int x)
     }
 }
 
+// Ham tim node thay the
+void timNodeThayThe(TREE& X, TREE& Y)
+{
+    if (Y->pLeft != NULL) { // duyet sang ben trai cuoi cung
+        timNodeThayThe(X, Y->pLeft); // tim ra node trai cuoi
+    } else { // da tim duoc node trai cuoi
+        X->data = Y->data;
+        X = Y;
+        Y = Y->pRight;
+    }
+}
+
 // Ham xoa 1 node trong cay
 void xoaNode(TREE& t, int data) // gia tri cua node can xoa
 {
@@ -137,17 +149,6 @@ void xoaNode(TREE& t, int data) // gia tri cua node can xoa
             }
             delete X;
         }
-    }
-}
-// Ham tim node thay the
-void timNodeThayThe(TREE& X, TREE& Y)
-{
-    if (Y->pLeft != NULL) { // duyet sang ben trai cuoi cung
-        timNodeThayThe(X, Y->pLeft); // tim ra node trai cuoi
-    } else { // da tim duoc node trai cuoi
-        X->data = Y->data;
-        X = Y;
-        Y = Y->pRight;
     }
 }
 
