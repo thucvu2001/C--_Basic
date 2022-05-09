@@ -21,6 +21,11 @@ int main()
     }
     int x;
     cin >> x;
-    cout << SequentialSearch(a, 0, n - 1, x);
+    int ans = SequentialSearch(a, 0, n - 1, x);
+    if (ans >= 0) {
+        cout << "Phan tu " << x << " o vi tri: " << ans + 1 << endl;
+    } else {
+        cout << "Phan tu " << x << " khong co trong day!" << endl;
+    }
     return 0;
 }
