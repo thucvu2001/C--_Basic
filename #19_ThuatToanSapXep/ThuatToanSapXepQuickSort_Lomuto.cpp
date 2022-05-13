@@ -3,7 +3,7 @@ using namespace std;
 
 int partition(int a[], int l, int r)
 {
-    int pivot = a[r];
+    int pivot = a[r]; // chon chot la phan tu cuoi cung
     int i = l - 1;
     for (int j = l; j < r; j++) {
         if (a[j] <= pivot) {
