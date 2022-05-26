@@ -2,15 +2,16 @@
 
 using namespace std;
 
-// thuật toán sinh: tìm một số lớn hơn n mà nhỏ nhất có thể
+// Bài toán sinh Hoán Vị
+// thuật toán: tìm một số lớn hơn n mà nhỏ nhất có thể
+
 int n;
 int a[100];
 int ok;
 
 void khoiTao()
 {
-    for (int i = 1; i <= n; i++)
-    {
+    for (int i = 1; i <= n; i++) {
         a[i] = i; // cau hinh dau tien;
     }
 }
@@ -18,27 +19,21 @@ void khoiTao()
 void sinh()
 {
     int i = n - 1; // bắt đầu từ bit gần cuối, tìm vị trí a[i] < a[i+1];
-    while (i >= 1 && a[i] > a[i + 1])
-    { // khi nào còn lớn hơn thì trừ
+    while (i >= 1 && a[i] > a[i + 1]) { // khi nào còn lớn hơn thì trừ
         --i;
     }
-    if (i == 0)
-    {
+    if (i == 0) {
         ok = 0; // day la cau hinh cuoi cung
-    }
-    else
-    {
+    } else {
         // di tim > a[i] nho nhat trong doan tu [i+1, n];
         int j = n;
-        while (a[i] > a[j])
-        {
+        while (a[i] > a[j]) {
             --j;
         }
         swap(a[i], a[j]); // đổi chỗ sau đó đảo ngược;
         // dao nguoc
         int l = i + 1, r = n;
-        while (l < r)
-        {
+        while (l < r) {
             swap(a[l], a[r]);
             l++;
             r--;
@@ -52,16 +47,13 @@ int main()
     cin >> n;
     ok = 1;
     khoiTao();
-    while (ok == 1)
-    {
-        for (int i = 1; i <= n; i++)
-        {
+    while (ok == 1) {
+        for (int i = 1; i <= n; i++) {
             cout << a[i];
         }
         cout << endl;
         sinh();
     }
-    system("pause");
     return 0;
 }
 

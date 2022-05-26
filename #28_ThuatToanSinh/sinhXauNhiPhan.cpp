@@ -20,12 +20,11 @@ using namespace std;
 //     <Sinh cau hinh ke  tiep>
 // }
 
-int n, a[100], ok;
+int n, a[101], ok;
 
 void khoiTao()
 {
-    for (int i = 1; i <= n; i++)
-    {
+    for (int i = 1; i <= n; i++) {
         a[i] = 0;
     }
 }
@@ -35,17 +34,13 @@ void sinh()
     // Bat dau tu bit cuoi cung, va di tim bit 0 dau tien
     // Trong quá trình đi tìm bit 0 nếu gặp bit 1 thì chuyển bit 1 thành 0 và tiếp tục dịch sang trái;
     int i = n;
-    while (i >= 1 && a[i] == 1)
-    {
+    while (i >= 1 && a[i] == 1) {
         a[i] = 0;
         i--;
     }
-    if (i == 0)
-    {
+    if (i == 0) {
         ok = 0; // day la cau hinh cuoi cung;
-    }
-    else
-    {
+    } else {
         a[i] = 1;
     }
 }
@@ -55,15 +50,12 @@ int main()
     cin >> n;
     ok = 1;
     khoiTao();
-    while (ok == 1)
-    {
-        for (int i = 1; i <= n; i++)
-        {
+    while (ok == 1) {
+        for (int i = 1; i <= n; i++) {
             cout << a[i];
         }
         cout << endl;
         sinh();
     }
-    system("pause");
     return 0;
 }

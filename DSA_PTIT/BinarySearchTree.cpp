@@ -104,13 +104,12 @@ NODE* timKiem(TREE t, int x)
     if (t == NULL) {
         return NULL;
     } else {
-        // neu phan tu can tim nho hon node goc thi duyet de quy sang ben trai
-        if (x < t->data) {
+        if (x == t->data) {
+            return t;
+        } else if (x < t->data) { // neu phan tu can tim nho hon node goc thi duyet de quy sang ben trai
             timKiem(t->pLeft, x);
         } else if (x > t->data) { // nguoc lai de quy sang ben phai
             timKiem(t->pRight, x);
-        } else {
-            return t; // tra ve node can tim kiem
         }
     }
 }
@@ -118,34 +117,33 @@ NODE* timKiem(TREE t, int x)
 // Ham tim node thay the
 void timNodeThayThe(TREE& X, TREE& Y)
 {
-    if (Y->pLeft != NULL) { // duyet sang ben trai cuoi cung
-        timNodeThayThe(X, Y->pLeft); // tim ra node trai cuoi
-    } else { // da tim duoc node trai cuoi
+    if (Y->pRight != NULL) { // duyet sang ben phai cuoi cung
+        timNodeThayThe(X, Y->pRight); // tim ra node phai cuoi
+    } else { // da tim duoc node phai cuoi
         X->data = Y->data;
         X = Y;
-        Y = Y->pRight;
+        Y = Y->pLeft;
     }
 }
 
 // Ham xoa 1 node trong cay
 void xoaNode(TREE& t, int data) // gia tri cua node can xoa
 {
-    if (t == NULL) { // neu cay rong
+    if (t == NULL) { // neu cay rong thi ket thuc
         return;
     } else {
         if (data < t->data) { // neu data nho hon node goc
             xoaNode(t->pLeft, data); // duyet de quy sang nhanh ben trai
         } else if (data > t->data) {
             xoaNode(t->pRight, data); // duyet de quy sang nhanh ben phai
-        } else { // da tim ra phan tu can xoa
+        } else { // da tim ra phan tu can xoa (data == t->data)
             NODE* X = t; // X thay the cho t, xoa X
             if (t->pLeft == NULL) { // neu nhanh trai = NULL ==> cay con phai
                 t->pRight; // duyet sang phai cua node can xoa de cap nhat moi lien ket giua node cha va con cua node can xoa
             } else if (t->pRight == NULL) {
                 t->pLeft;
             } else { // node can xoa la node co 2 con
-                NODE* Y = t->pRight; // node Y la node thay the cho node can xoa
-                timNodeThayThe(X, Y);
+                timNodeThayThe(X, t->pLeft);
             }
             delete X;
         }
@@ -200,13 +198,13 @@ void Menu(TREE& t)
             Duyet_RLN(t);
         } else if (luachon == 8) {
             int x;
-            cout << "\nNhap phan tu can tim kiem";
+            cout << "\nNhap phan tu can tim kiem: ";
             cin >> x;
             NODE* p = timKiem(t, x);
             if (p == NULL) {
                 cout << "\nPhan tu " << x << " khong ton tai trong cay";
             } else {
-                cout << "\nPhantu " << x << " co ton tai trong cay";
+                cout << "\nPhan tu " << x << " co ton tai trong cay";
             }
         } else if (luachon == 9) {
             int x;
