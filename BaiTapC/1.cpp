@@ -3,14 +3,16 @@ using namespace std;
 
 int main()
 {
-    string s;
-    getline(cin , s);
-    char c[1001];
-    for(int i = 0; i < s.length(); i++){
-        c[i] = s[i];
+    map<int, int> mp;
+    int n;
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        int x;
+        cin >> x;
+        mp[x]++;
     }
-    for(int i = 0; i < s.length(); i++){
-        cout << c[i];
+    for (auto it : mp) {
+        cout << it.first << " " << it.second << endl;
     }
     return 0;
 }
