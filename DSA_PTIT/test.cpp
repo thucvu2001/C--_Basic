@@ -1,10 +1,11 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-int main(){
+int main()
+{
 
     bool a = true, b = false, c = false, d = true;
-    if(!(a || b)){
+    if (!(a || b)) {
         cout << "1";
     } else {
         cout << "0";
